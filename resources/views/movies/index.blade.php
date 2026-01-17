@@ -11,6 +11,7 @@
     <div class="max-w-7xl mx-auto px-6 py-12">
         @include('movies.partials.header')
         @include('movies.partials.movie-grid')
+        @include('movies.partials.movie-card-template')
     </div>
 
     @include('movies.partials.modal-detail')
