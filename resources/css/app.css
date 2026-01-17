@@ -6,6 +6,25 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Inter", "Plus Jakarta Sans", "Instrument Sans", ui-sans-serif, system-ui;
+
+    --color-brand-bg: #0b0f1a;
+    --color-brand-card: #161c2d;
+    --color-brand-primary: #3b82f6;
+    --color-brand-accent: #60a5fa;
+    --color-brand-text: #f1f5f9;
+    --color-brand-muted: #94a3b8;
+    --color-brand-border: #1e293b;
+
+    --radius-main: 1.25rem;
+    --radius-inner: 0.75rem;
+
+    --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+@utility glass {
+    background: rgba(22, 28, 45, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
