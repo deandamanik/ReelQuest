@@ -33,7 +33,7 @@ class MovieController extends Controller
         $response = Http::get("http://www.omdbapi.com/", [
             'apikey' => config('services.omdb.key'),
             'i' => $id,
-            'plot' => 'full'
+            'plot' => 'short'
         ]);
 
         return response()->json($response->json());

@@ -21,7 +21,7 @@
 
         timeout = setTimeout(() => {
             if (query.length > 2) fetchMovies(query);
-        }, 500);
+        }, 100);
     });
 
     async function fetchMovies(query) {
@@ -51,15 +51,21 @@
 
         movies.forEach(movie => {
             const content = template.content.cloneNode(true);
-            const poster = movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/400x600?text=No+Poster';
-
+            const placeholder = '/img/no-poster.png';
+            const posterSrc = (movie.Poster && movie.Poster !== 'N/A') ? movie.Poster : placeholder;
             const cardWrapper = content.querySelector('.group');
-            content.getElementById('mc-poster').src = poster;
+            const imgElement = content.getElementById('mc-poster');
+
+            imgElement.src = posterSrc;
+
+            imgElement.onerror = function() {
+                this.src = placeholder;
+            };
+
             content.getElementById('mc-title').textContent = movie.Title;
             content.getElementById('mc-info').textContent = `${movie.Year} • ${movie.Type}`;
 
             cardWrapper.onclick = () => openModal(movie.imdbID);
-
             movieGrid.appendChild(content);
         });
     }
@@ -84,7 +90,15 @@
             const template = document.getElementById('movieDetailTemplate');
             const content = template.content.cloneNode(true);
 
-            content.getElementById('md-poster').src = movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/400x600?text=No+Poster';
+            const placeholder = '/img/no-poster.png';
+            const detailPoster = (movie.Poster && movie.Poster !== 'N/A') ? movie.Poster : placeholder;
+
+            const modalImg = content.getElementById('md-poster');
+            modalImg.src = detailPoster;
+            modalImg.onerror = function() {
+                this.src = placeholder;
+            };
+
             content.getElementById('md-title').textContent = movie.Title;
             content.getElementById('md-year').textContent = movie.Year;
             content.getElementById('md-rated').textContent = movie.Rated;
